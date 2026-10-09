@@ -1,0 +1,62 @@
+error_format = " $full_error_message "
+[theme]
+theme = "solarized-dark"
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "cpu"
+format = " CPU $utilization "
+
+[[block]]
+block = "temperature"
+format = " $icon $max "
+interval = 5
+chip = "*-isa-*"
+
+[[block]]
+block = "memory"
+format = " RAM $mem_used_percents "
+
+[[block]]
+block = "disk_space"
+path = "/"
+format = " SSD $available "
+format_alt = " SSD $used / $total "
+interval = 60
+warning = 20
+alert = 10
+
+[[block]]
+block = "net"
+format = " $icon ↓$speed_down.eng(prefix:K) ↑$speed_up.eng(prefix:K) "
+interval = 2
+
+[[block]]
+block = "keyboard_layout"
+driver = "xkbevent"
+format = " $layout "
+
+[block.mappings]
+"English (US)" = "EN"
+"Bulgarian (N/A)" = "BG"
+
+[[block]]
+block = "weather"
+format = " $icon $temp $weather "
+format_alt = " $icon $temp | Wind: $wind_kmh km/h | Humidity: $humidity "
+interval = 600
+
+[block.service]
+name = "metno"
+coordinates = ["52.0116", "4.3571"]
+
+[[block]]
+block = "battery"
+format = " $icon $percentage "
+
+[[block]]
+block = "time"
+interval = 1
+format = " $timestamp.datetime(f:'%Y-%m-%d %H:%M:%S') "
